@@ -22,6 +22,20 @@ class UsersController < ApplicationController
 		render json: @user
 	end
 
+	def update
+		@user = User.find(params[:id])
+		#if params[:user][:name]
+		#	@user[:name] = params[:user][:name]
+		#end
+		#if params[:user][:email] 
+		#	@user[:email] = params[:user][:email]
+		#end
+		params[:user].each do |key, value| 
+			@user[key] = value
+		end
+		@user.save
+		render json: @user
+	end
 
 
 
